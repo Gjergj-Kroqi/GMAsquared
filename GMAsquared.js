@@ -1,4 +1,5 @@
 let n;
+let num;
 
 function game(diff) {
 
@@ -7,13 +8,15 @@ function game(diff) {
     document.getElementById("header1").innerHTML = "GAME ON";
 
 
-
     if (diff == 0) {
         document.getElementById("header2").innerHTML = "Guess a Number Between 1-10";
+        x = generateNum(diff);
     } else if (diff == 1) {
         document.getElementById("header2").innerHTML = "Guess a Number Between 1-30";
+        x = generateNum(diff);
     } else {
         document.getElementById("header2").innerHTML = "Guess a Number Between 1-50";
+        x = generateNum(diff);
     }
 
     let v = document.getElementById("button");
@@ -21,13 +24,26 @@ function game(diff) {
 
     document.getElementById("inputArea").hidden = false;
 
+}
 
+function generateNum(n) {
+    if (n == 0) {
+        correctNum = Math.floor(Math.random() * 10) + 1;
+    } else if (n == 1) {
+        correctNum = Math.floor(Math.random() * 30) + 1;
+    } else {
+        correctNum = Math.floor(Math.random() * 50) + 1;
+    }
+
+    num = correctNum;
+
+    return correctNum;
 
 }
 
 function checkGuess() {
     let x = document.getElementById("num").value;
-    let correctNum;
+    let correctNum = num;
     let condition;
 
     if (n == 0) {
@@ -54,12 +70,12 @@ function checkGuess() {
         if (n == 0) {
             correctNum = Math.floor(Math.random() * 10) + 1;
         } else if (n == 1) {
-            correctNum = Math.floor(Math.random() * 20) + 1;
-        } else {
             correctNum = Math.floor(Math.random() * 30) + 1;
+        } else {
+            correctNum = Math.floor(Math.random() * 50) + 1;
         }
 
-        alert("The Correct Number Was "+ correctNum);
+        alert("The Correct Number Was " + correctNum);
 
         if (x == correctNum) {
             alert("You guessed correctly");
@@ -70,6 +86,4 @@ function checkGuess() {
         alert("not in the range");
     }
 
-
 }
-
