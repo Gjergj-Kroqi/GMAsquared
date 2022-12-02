@@ -63,3 +63,7 @@ a {
     transition-duration: 0.4s;
 
 }
+
+#refresh {
+    font-size: 20px;
+}

@@ -1,5 +1,6 @@
 let n;
 let num;
+let attempts = 3;
 
 function game(diff) {
 
@@ -23,6 +24,7 @@ function game(diff) {
     v.parentNode.removeChild(v);
 
     document.getElementById("inputArea").hidden = false;
+    document.getElementById("refresh").hidden = false;
 
 }
 
@@ -45,6 +47,7 @@ function checkGuess() {
     let x = document.getElementById("num").value;
     let correctNum = num;
     let condition;
+
 
     if (n == 0) {
         if (x >= 1 && x <= 10) {
@@ -81,6 +84,16 @@ function checkGuess() {
             alert("You guessed correctly");
         } else {
             alert("You guessed Incorrectly");
+            attempts--;
+            if (attempts == 0) {
+                alert("You ran out of attempts. You will be redirected to the Main Menu");
+                location.reload();
+            }
+            if (attempts != 1) {
+                document.getElementById("attempts").innerHTML = "You Have " + attempts + " Attempts Left"
+            } else {
+                document.getElementById("attempts").innerHTML = "You Have " + attempts + " Attempt Left"
+            }
         }
     } else {
         alert("not in the range");
